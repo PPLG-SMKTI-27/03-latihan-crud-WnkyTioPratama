@@ -9,7 +9,7 @@ books = [
 # data peminjaman
 records = [
     {"isbn":"9786022912828", "status":"Selesai", "tanggal_pinjam":"2025-03-21", "tanggal_kembali":"2025-03-28"},
-    {"isbn":"9786026163905", "status":"Belum", "tanggal_pinjam":"2025-07-22", "tanggal_kembali":""}
+    {"isbn":"9786026163905", "status":"Belum", "tanggal_pinjam":"2025-07-22", "tanggal_kembali":"", "tanggal_kembali":""},
 ]
 
 def tampilkan_data():
@@ -101,6 +101,7 @@ def peminjaman():
 
 def pengembalian():
     isbn = input("Masukkan ISBN buku yang ingin dikembalikan: ")
+    balik_buku = input("tanggal buku pas mau di kembalikan:")
     for book in books:
         if book['isbn'] == isbn:
             if book['terpinjam'] > 0:
@@ -108,7 +109,7 @@ def pengembalian():
                 for record in records:
                     if record['isbn'] == isbn and record['status'] == "Belum":
                         record['status'] = "Selesai"
-                        record['tanggal_kembali'] = "2025-03-28"
+                        record['tanggal_kembali'] = balik_buku
                         break
                 print("Buku berhasil dikembalikan.")
             else:
